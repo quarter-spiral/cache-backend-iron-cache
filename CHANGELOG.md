@@ -1,4 +1,4 @@
-# 0.0.3 WIP
+# 0.0.3
 
 * Eases JSON dependency
 
