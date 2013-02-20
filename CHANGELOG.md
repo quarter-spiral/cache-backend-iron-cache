@@ -1,4 +1,4 @@
-# 0.0.4 WIP
+# 0.0.4
 
 * Fixes return values of setters
 
