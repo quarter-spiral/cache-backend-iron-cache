@@ -13,7 +13,7 @@ describe Cache::Backend::IronCache do
       # that's ok
     end
     @client.get('a-key').must_be_nil
-    @client.set('a-key', 'some info')
+    @client.set('a-key', 'some info').must_equal('some info')
     @client.get('a-key').must_equal('some info')
 
     @ironcache.get('a-key').value.must_equal(JSON.dump("value" => "some info"))
@@ -35,5 +35,14 @@ describe Cache::Backend::IronCache do
   it "works with numbers" do
     @client.set('a-key', 34.546)
     @client.get('a-key').must_equal(34.546)
+  end
+
+  it "can fetch stuff" do
+    @client.set(['bla', 0], nil)
+    @client.fetch(['bla', 0]) do
+      "Hello"
+    end.must_equal "Hello"
+
+    @client.get(['bla', 0]).must_equal('Hello')
   end
 end

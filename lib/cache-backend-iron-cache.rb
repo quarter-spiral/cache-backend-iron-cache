@@ -19,6 +19,7 @@ module Cache
 
       def set(key, value)
         @client.put(key, JSON.dump({value: value}))
+        value
       end
     end
   end
